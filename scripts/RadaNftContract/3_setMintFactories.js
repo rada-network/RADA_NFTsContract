@@ -14,10 +14,10 @@ async function main() {
 
   const nftContract = await ethers.getContractAt("RadaNftContract",contractAddress);
 
-  const URL_BASE = "https://nft.1alo.com/rada/v1/";
-  await nftContract.updateBaseURI(URL_BASE);
+  await nftContract.setMintFactory("0xBe02a2364fD4a8e5d275987BC786187108f3DDc6");
+  await nftContract.setMintFactory("0x49117A8E02872C0B6b399829823bD912Bf74B097");
 
-  console.log("updateBaseURI changed");
+  console.log("setMintFactory changed");
 
   const afterDeploy = fe(await deployer.getBalance());
   console.log("Cost deploy:", (beforeDeploy-afterDeploy));

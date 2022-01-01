@@ -25,7 +25,8 @@ Build & Deploy BSC testnet | RadaNftContract
 
 npx hardhat run scripts/RadaNftContract/1_deploy.js --network testnet
 // Copy Token address to proxyAddresses.js
-# npx hardhat run scripts/RadaNftContract/2_setup.js --network testnet
+npx hardhat run scripts/RadaNftContract/2_setup.js --network testnet
+npx hardhat run scripts/RadaNftContract/3_setMintFactories.js --network testnet
 
 // npx hardhat verify --network testnet --contract contracts/RadaNftContract.sol:RadaNftContract 0x6d6E82862a32A16787cC6a4b7084B05d38f22948
 
