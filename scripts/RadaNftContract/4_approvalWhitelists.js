@@ -14,12 +14,11 @@ async function main() {
 
   const nftContract = await ethers.getContractAt("RadaNftContract",contractAddress);
 
-  await nftContract.setMintFactory("0x16DA4c7B28dc30BCE9e2B384E17a7b0078Fb97AE");// Quang
-  await nftContract.setMintFactory("0xbA92132B464af8BC073fA1a7a518b32298435d68");// Open box
-  await nftContract.setMintFactory("0xBe02a2364fD4a8e5d275987BC786187108f3DDc6"); // Auction
-  await nftContract.setMintFactory("0x49117A8E02872C0B6b399829823bD912Bf74B097"); // Fixed
+  await nftContract.approvalWhitelists("0x16DA4c7B28dc30BCE9e2B384E17a7b0078Fb97AE");
+  await nftContract.approvalWhitelists("0x0c1954CEB2227e3C5E6155B40fd929C1fF64F5f5"); // Hieuvector
+  
 
-  console.log("setMintFactory changed");
+  console.log("approvalWhitelists done");
 
   const afterDeploy = fe(await deployer.getBalance());
   console.log("Cost deploy:", (beforeDeploy-afterDeploy));

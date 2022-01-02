@@ -92,6 +92,7 @@ contract RadaNftContract is
      */
     function setMintFactory(address _factory) public onlyOwner {
         _setupRole(MINTER_ROLE, _factory);
+        approvalWhitelists[_factory] = true;
     }
 
     /**
@@ -99,6 +100,7 @@ contract RadaNftContract is
      */
     function removeMintFactory(address _factory) public onlyOwner {
         revokeRole(MINTER_ROLE, _factory);
+        approvalWhitelists[_factory] = false;
     }
 
     /**
