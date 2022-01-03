@@ -14,10 +14,10 @@ async function main() {
 
   const nftContract = await ethers.getContractAt("RadaNftContract",contractAddress);
 
-  await nftContract.setMintFactory("0x16DA4c7B28dc30BCE9e2B384E17a7b0078Fb97AE");// Quang
-  await nftContract.setMintFactory("0xbA92132B464af8BC073fA1a7a518b32298435d68");// Open box
-  await nftContract.setMintFactory("0xBe02a2364fD4a8e5d275987BC786187108f3DDc6"); // Auction
-  await nftContract.setMintFactory("0x49117A8E02872C0B6b399829823bD912Bf74B097"); // Fixed
+  // await nftContract.setMintFactory("0x16DA4c7B28dc30BCE9e2B384E17a7b0078Fb97AE");// Quang
+  // await nftContract.setMintFactory("0xbA92132B464af8BC073fA1a7a518b32298435d68");// Open box
+  await nftContract.setMintFactory("0x7C2e7fF40254c465d1941B923C669Df9F6488898"); // Auction
+  // await nftContract.setMintFactory("0x49117A8E02872C0B6b399829823bD912Bf74B097"); // Fixed
 
   console.log("setMintFactory changed");
 

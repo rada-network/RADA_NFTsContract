@@ -16,7 +16,7 @@ async function main() {
 
   await nftContract.approvalWhitelists("0x16DA4c7B28dc30BCE9e2B384E17a7b0078Fb97AE");
   await nftContract.approvalWhitelists("0x0c1954CEB2227e3C5E6155B40fd929C1fF64F5f5"); // Hieuvector
-  
+
 
   console.log("approvalWhitelists done");
 

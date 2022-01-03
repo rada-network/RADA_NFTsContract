@@ -31,6 +31,6 @@ npx hardhat run scripts/RadaNftContract/4_approvalWhitelists.js --network testne
 
 npx hardhat run scripts/RadaNftContract/test_safeMint.js --network testnet
 
-// npx hardhat verify --network testnet --contract contracts/RadaNftContract.sol:RadaNftContract 0x6d6E82862a32A16787cC6a4b7084B05d38f22948
+// npx hardhat verify --network testnet --contract contracts/RadaNftContract.sol:RadaNftContract 0x6e1aa924A1882B7C1122290E11A9fE94F63Af52d
 
 ```
