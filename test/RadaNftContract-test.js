@@ -19,11 +19,6 @@ describe("NFT Contract", function () {
   const MINTER_ROLE = "0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6";
   const URL_BASE = "https://nft.1alo.com/v1/rada/";
   const tokenId = "100000";
-  // Utils
-  const pe = (num) => ethers.utils.parseEther(num) // parseEther
-  const fe = (num) => ethers.utils.formatEther(num) // formatEther
-  const pu = (num, decimals = 0) => ethers.utils.parseUnits(num, decimals) // parseUnits
-  const fu = (num, decimals = 0) => ethers.utils.formatUnits(num, decimals) // formatEther
 
   beforeEach(async function () {
 
@@ -56,10 +51,10 @@ describe("NFT Contract", function () {
     await contractNFT.connect(approvalUser).handleLock(tokenId, true);
     expect(await contractNFT.isLocked(tokenId)).to.equal(true);
   });
-  it('Should use tokenId', async function () {
+  /* it('Should use tokenId', async function () {
     await contractNFT.connect(approvalUser).handleUse(tokenId, true);
     expect(await contractNFT.isUsed(tokenId)).to.equal(true);
-  });
+  }); */
   it('Should set type tokenId', async function () {
     await contractNFT.connect(approvalUser).setType(tokenId, 1);
     expect(await contractNFT.typeTokens(tokenId)).to.equal(1);

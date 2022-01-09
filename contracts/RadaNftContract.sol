@@ -17,8 +17,6 @@ contract RadaNftContract is
 
     struct NFT_INFO {
         bool locked; // Cannot transfer
-        bool used; // Use for any purpuse
-        bool isBox; // Is Box
         uint16 typeNft; // type of NFT
     }
 
@@ -131,49 +129,10 @@ contract RadaNftContract is
     }
 
     /**
-     * @dev Set is box NFT
-     */
-    function setBox(uint256 _tokenId, bool _isBox) external {
-        require(
-            approvalWhitelists[_msgSender()],
-            "Must be valid approval whitelist"
-        );
-        require(_exists(_tokenId), "Must be valid tokenId");
-        items[_tokenId].isBox = _isBox;
-    }
-
-    /**
-     * @dev Use token
-     */
-    function handleUse(uint256 _tokenId, bool _used) external {
-        require(
-            approvalWhitelists[_msgSender()],
-            "Must be valid approval whitelist"
-        );
-        require(_exists(_tokenId), "Must be valid tokenId");
-        require(items[_tokenId].used != _used, "Already set");
-        items[_tokenId].used = _used;
-    }
-
-    /**
      * @dev Get lock status
      */
     function isLocked(uint256 _tokenId) public view returns (bool) {
         return items[_tokenId].locked;
-    }
-
-    /**
-     * @dev Get use status
-     */
-    function isUsed(uint256 _tokenId) public view returns (bool) {
-        return items[_tokenId].used;
-    }
-
-    /**
-     * @dev Get use status
-     */
-    function isBox(uint256 _tokenId) public view returns (bool) {
-        return items[_tokenId].isBox;
     }
 
     /**
