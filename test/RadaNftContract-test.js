@@ -57,7 +57,13 @@ describe("NFT Contract", function () {
   }); */
   it('Should set type tokenId', async function () {
     await contractNFT.connect(approvalUser).setType(tokenId, 1);
-    expect(await contractNFT.typeTokens(tokenId)).to.equal(1);
+    const item = await contractNFT.items(tokenId);
+    expect(item.typeNft).to.equal(1);
   });
 
+  it('Should pause contract', async function () {
+    await contractNFT.setPause(true);
+    const newTokenId = "100001";
+    await expect(contractNFT.connect(minterFactoryUser).safeMint(user1.address, newTokenId)).to.be.revertedWith("Pausable: paused");
+  });
 });
