@@ -59,6 +59,16 @@ contract RadaNftContract is
         _safeMint(_to, _tokenId);
     }
 
+    function batchSafeMint(address _to, uint256 _startId, uint256 _endId)
+        public
+        virtual
+        whenNotPaused
+    {
+        for(uint i = _startId; i <= _endId; i++){
+            _safeMint(_to, i);
+        }
+    }
+
     /**
      * @dev See {IERC721-isApprovedForAll}.
      */
