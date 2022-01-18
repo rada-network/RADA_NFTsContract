@@ -28,23 +28,24 @@ async function main() {
   console.log("safeMint #",startId," => ",endId); */
 
 
-  startId = 80029;
-  endId = 80049;
+  startId = 180000;
+  endId = 180049;
   /* await nftContract.batchSafeMint("0x0A5D85009f9cB85C90D6BeEd810532F68a74dB79", startId, endId); // NFTAuctionContract 10
   console.log("safeMint #",startId," => ",endId); */
   for (var i=startId; i<=endId;i++) {
-    await nftContract.safeMint("0xffA91816a176bdcb4E805f956DD578d8db0D4C20", i); // NFTAuctionContract 10
+    await nftContract.safeMint("0xaCEE77e4ae3FfD23f943605Aa21d9BBaa16C142b", i); // NFTAuctionContract 10
     console.log("safeMint #",i);
   }
 
-  startId = 90000;
-  endId = 90049;
+  startId = 190050;
+  endId = 190099;
   /* await nftContract.batchSafeMint("0xec7CDF97F016813Ab789a152E0b1c821073173B5", startId, endId); // NFTFixedSwapContract 11
   console.log("safeMint #",startId," => ",endId); */
   for (var i=startId; i<=endId;i++) {
-    await nftContract.safeMint("0xD2B7a172e04eD493Db50c1084732b12296850AF5", i); // NFTFixedSwapContract 11
+    await nftContract.safeMint("0xe25DA05393Cb8050820BB651e97789CD49423237", i); // NFTFixedSwapContract 11
     console.log("safeMint #",i);
   }
+
 
   const afterDeploy = fe(await deployer.getBalance());
   console.log("Cost deploy:", (beforeDeploy-afterDeploy));
