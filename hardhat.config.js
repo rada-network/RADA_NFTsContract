@@ -79,6 +79,16 @@ module.exports = {
         count: 20
       } */
     },
+    polygon: {
+      url: "https://polygon-rpc.com",
+      accounts: [`0x${PRIVATE_KEY}`],
+      chainId: 137
+    },
+    polygonMumbai: {
+      url: "https://rpc-mumbai.maticvigil.com",
+      accounts: [`0x${PRIVATE_KEY}`],
+      chainId: 80001
+    }
   },
   gasReporter: {
     enabled: false,

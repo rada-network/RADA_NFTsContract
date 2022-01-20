@@ -11,8 +11,15 @@ async function main() {
 
   const RadaNftContract = await ethers.getContractFactory("RadaNftContract");
 
-  const proxyContract = await RadaNftContract.deploy();
-  console.log("Contract address:", proxyContract.address);
+  const contractDeploy = await RadaNftContract.deploy();
+
+  await contractDeploy.deployed();
+  const txHash = contractDeploy.deployTransaction.hash;
+  console.log(`Tx hash: ${txHash}\nWaiting for transaction to be mined...`);
+  const txReceipt = await ethers.provider.waitForTransaction(txHash);
+
+  console.log("Contract address:", txReceipt.contractAddress);
+  // console.log("Contract address:", contractDeploy.address);
 
   const afterDeploy = fe(await deployer.getBalance());
   console.log("Cost deploy:", (beforeDeploy-afterDeploy));
