@@ -27,7 +27,7 @@ contract RadaNftContract is
     string private _baseTokenURI;
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
-    constructor() ERC721("RADA NFT", "RFT") {}
+    constructor() ERC721("LaunchVerse New Year", "LVNY") {}
 
     function _baseURI() internal view virtual override returns (string memory) {
         return _baseTokenURI;
@@ -59,12 +59,12 @@ contract RadaNftContract is
         _safeMint(_to, _tokenId);
     }
 
-    function batchSafeMint(address _to, uint256 _startId, uint256 _endId)
-        public
-        virtual
-        whenNotPaused
-    {
-        for(uint i = _startId; i <= _endId; i++){
+    function batchSafeMint(
+        address _to,
+        uint256 _startId,
+        uint256 _endId
+    ) public virtual whenNotPaused {
+        for (uint256 i = _startId; i <= _endId; i++) {
             _safeMint(_to, i);
         }
     }

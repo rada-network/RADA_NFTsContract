@@ -23,7 +23,9 @@ async function main() {
   // await nftContract.setMintFactory("0x63B70bAD9a1958eF743EeF22086637FaD92f3555"); // Auction
   // await nftContract.setMintFactory("0x8cE3514596bfe2E15c1e38c3446DCca17F2317df"); // Fixed
   // await nftContract.setMintFactory("0x16DA4c7B28dc30BCE9e2B384E17a7b0078Fb97AE"); // Deployer
-  await nftContract.setMintFactory("0xBB04873c3D00dd6779dAE848029a2bC82a3A222b"); // NFTMan
+  // await nftContract.setMintFactory("0xBB04873c3D00dd6779dAE848029a2bC82a3A222b"); // NFTMan
+  await nftContract.setMintFactory("0x77f866b1E2528544C8CBfda8D58001dd1abcE70e"); // NFTMan Polygon
+
 
 
   console.log("setMintFactory changed");
