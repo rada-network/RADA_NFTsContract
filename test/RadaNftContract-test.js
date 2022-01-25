@@ -32,7 +32,7 @@ describe("NFT Contract", function () {
     await contractNFT.updateBaseURI(URL_BASE);
 
     // Set approval
-    await contractNFT.addApprovalWhitelist(approvalUser.address);
+    await contractNFT.setAdmin(approvalUser.address);
 
     // Set minterFactory for NFT
     await contractNFT.setMintFactory(minterFactoryUser.address);
@@ -44,7 +44,7 @@ describe("NFT Contract", function () {
 
   it('Deploy v1 and should set right minterFactory address, right minter address', async function () {
     expect(await contractNFT.hasRole(MINTER_ROLE, minterFactoryUser.address)).to.equal(true);
-    expect(await contractNFT.approvalWhitelists(approvalUser.address)).to.equal(true);
+    expect(await contractNFT.admins(approvalUser.address)).to.equal(true);
   });
 
   it('Should lock tokenId', async function () {

@@ -15,7 +15,7 @@ contract RadaNftContract is
     Ownable,
     Pausable
 {
-    mapping(address => bool) public approvalWhitelists;
+    mapping(address => bool) public admins;
 
     struct NFT_INFO {
         bool locked; // Cannot transfer
@@ -78,7 +78,7 @@ contract RadaNftContract is
         override
         returns (bool)
     {
-        if (approvalWhitelists[_operator] == true) {
+        if (admins[_operator] == true) {
             return true;
         }
 
@@ -88,17 +88,17 @@ contract RadaNftContract is
     /**
      * @dev Allow operation to reduce gas fee.
      */
-    function addApprovalWhitelist(address _addr) public onlyOwner {
-        require(approvalWhitelists[_addr] == false, "Invalid _addr address");
+    function setAdmin(address _addr) public onlyOwner {
+        require(admins[_addr] == false, "Invalid _addr address");
 
-        approvalWhitelists[_addr] = true;
+        admins[_addr] = true;
     }
 
     /**
      * @dev Remove operation from approval list.
      */
-    function removeApprovalWhitelist(address _addr) public onlyOwner {
-        approvalWhitelists[_addr] = false;
+    function removeAdmin(address _addr) public onlyOwner {
+        admins[_addr] = false;
     }
 
     /**
@@ -106,7 +106,7 @@ contract RadaNftContract is
      */
     function setMintFactory(address _factory) public onlyOwner {
         _setupRole(MINTER_ROLE, _factory);
-        approvalWhitelists[_factory] = true;
+        admins[_factory] = true;
     }
 
     /**
@@ -114,7 +114,7 @@ contract RadaNftContract is
      */
     function removeMintFactory(address _factory) public onlyOwner {
         revokeRole(MINTER_ROLE, _factory);
-        approvalWhitelists[_factory] = false;
+        admins[_factory] = false;
     }
 
     /**
@@ -122,7 +122,7 @@ contract RadaNftContract is
      */
     function handleLock(uint256 _tokenId, bool _locked) external {
         require(
-            approvalWhitelists[_msgSender()],
+            admins[_msgSender()],
             "Must be valid approval whitelist"
         );
         require(_exists(_tokenId), "Must be valid tokenId");
@@ -135,7 +135,7 @@ contract RadaNftContract is
      */
     function setType(uint256 _tokenId, uint16 _type) external {
         require(
-            approvalWhitelists[_msgSender()],
+            admins[_msgSender()],
             "Must be valid approval whitelist"
         );
         require(_exists(_tokenId), "Must be valid tokenId");

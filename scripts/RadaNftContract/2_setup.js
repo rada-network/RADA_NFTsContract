@@ -14,7 +14,7 @@ async function main() {
 
   const nftContract = await ethers.getContractAt("RadaNftContract",contractAddress);
 
-  const URL_BASE = "https://nft-meta.rada.network/static/meta/dev/";
+  const URL_BASE = "https://nft-meta.rada.network/static/meta/prod/";
   await nftContract.updateBaseURI(URL_BASE);
 
   console.log("updateBaseURI changed");
